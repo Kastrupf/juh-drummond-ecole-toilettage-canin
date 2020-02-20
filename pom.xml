@@ -40,6 +40,13 @@
             <artifactId>bootstrap</artifactId>
             <version>4.0.0</version>
         </dependency>
+
+        <!-- Migrations de données - Flyway -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
