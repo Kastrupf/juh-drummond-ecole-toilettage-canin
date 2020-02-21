@@ -1,1 +1,88 @@
-page de contact
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Juh Drummond Ecole de Toilettage Canin</title>
+
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    <link rel="stylesheet" href="/css/componentes.css"/>
+</head>
+
+<body>
+
+<header class="layout-cabecalho">
+    <div class="container">
+
+        <nav class="navegacao  navegacao--assinatura">
+            <a href="index.html"><img src="/images/logo.jpg" width="120" height="50" alt="Logo Juh Drummond"/></a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="layout-assinatura">
+    <div class="container">
+
+        <form th:action="@{/clients/enregistrer}" th:method="${client.id} == 0 ? post" th:object="${client}">
+            <h1 class="titulo-formulario">Restons en contact</h1>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                        <label for="nom">Nom</label>
+                        <input id="nom" name="nom" type="text" class="campo" th:field="*{nom}"/>
+                        <div th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></div>
+                    </div>
+                </div>
+               <div class="col-sm-6">
+                    <div class="grupo-entrada">
+                        <label for="prenom">Prénom</label>
+                        <input id="prenom" name="prenom" type="text" class="campo" th:field="*{prenom}"/>
+                        <div th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-entrada">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" class="campo" th:field="*{email}"/>
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            </div>
+
+            <div class="grupo-entrada">
+                <label for="message">Message</label>
+                <textarea id="message" type="text" rows="5" class="campo" th:field="*{message}"></textarea>
+                <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></div>
+            </div>
+
+            <div class="grupo-entrada">
+                <div class="form-check">
+                    <input type="hidden" name="rgpd.isAccept" value="on"/>
+                    <input type="checkbox" class="form-check-input" id="qr5" name="rgpd.isAccept" value="true"/>
+                    <label for="qr5" class="form-check-label dark-grey-text">Acceptation RGPG</label>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px">
+                <input type="submit" value="Envoyer" class="botao  botao--principal"/>
+            </div>
+        </form>
+
+    </div>
+</main>
+
+<footer class="layout-rodape">
+    <div class="container">
+        <p>&copy; 2020 Tous droits réservés Juh Drummond</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

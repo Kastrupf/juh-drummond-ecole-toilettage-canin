@@ -109,6 +109,13 @@
   background-color: #003b6a;
 }
 
+/*--------------------*\
+  CAROUSEL
+\*--------------------*/
+.carousel-item > img {
+  width: 100%;
+  height: 80%;
+}
 
 /*--------------------*\
   CHAMADA
@@ -119,7 +126,7 @@
 }
 
 .chamada__titulo {
-  margin: 0;
+  margin: 40px 0;
 
   color: #fff;
 

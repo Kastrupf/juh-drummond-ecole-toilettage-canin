@@ -30,11 +30,6 @@ public class ClientController {
         return "/client/add";
     }
 
-    @GetMapping("/login")
-    public String preLogin(@ModelAttribute("client") Client client) {
-        return "/client/login";
-    }
-
     @PostMapping("/enregistrer")
     public String save(@Valid @ModelAttribute("client") Client client, BindingResult result, RedirectAttributes attr) {
         if (result.hasErrors()) {
@@ -43,11 +38,11 @@ public class ClientController {
 
         clientService.enregistrer(client);
         attr.addFlashAttribute("mensagem", "Votre message a été bien envoyée");
-        return "redirect:/home";
+        return "redirect:/client/add";
     }
 
     @GetMapping("/id")
-    public ModelAndView recupererParID(long id, ModelMap model) {
+    public ModelAndView recupererParID(Integer id, ModelMap model) {
         Client client = clientService.recupererParID(id);
         model.addAttribute("client", client);
         return new ModelAndView("/client/add", model);

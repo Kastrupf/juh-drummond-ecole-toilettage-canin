@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Juh Drummond Ecole de Toilettage Canin</title>
+
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/layout.css"/>
+    <link rel="stylesheet" href="/css/componentes.css"/>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div th:if="${clients != null}">
+        <h4>
+            Liste de clients
+        </h4>
+
+        <div th:if="${mensagem != null}">
+            <div class="alert alert-info" role="alert">
+                <span th:text="${mensagem}">Pas de clients dans la liste</span>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Ip</th>
+            </tr>
+            </thead>
+            <tr th:each="client : ${clients}">
+                <td th:text="${client.nom}">Nom</td>
+                <td th:text="${client.prenom}">Prenom</td>
+                <td th:text="${client.email}">Email</td>
+                <td th:text="${client.message}">Message</td>
+                <td th:text="${client.date_heure}">Date de la Message</td>
+            </tr>
+        </table>
+    </div>
+
+    <div th:if="${#lists.isEmpty(clients)}">
+        <div class="alert alert-info" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            La liste ést vide!
+        </div>
+    </div>
+    <hr/>
+
+    <a class="btn btn-light" href="/home">Retour à l'accueil</a>
+    <hr/>
+
+    <footer class="footer">
+        <p>&copy; 2020 Tous droits réservés Juh Drummond</p>
+    </footer>
+
+</div>
+</body>
+</html>

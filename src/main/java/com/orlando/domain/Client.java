@@ -3,6 +3,8 @@ package com.orlando.domain;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "client")
@@ -10,7 +12,7 @@ public class Client  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @NotBlank
     @Size(min = 2, max = 60)
@@ -18,7 +20,7 @@ public class Client  {
     private String nom;
 
     @Size(min = 2, max = 60)
-    @Column(nullable = false, length = 60)
+    @Column(length = 60)
     private String prenom;
 
     @NotBlank
@@ -28,11 +30,14 @@ public class Client  {
     @Column(nullable = false)
     private String message;
 
-    public long getId() {
+    @Column(name = "date")
+    private LocalDateTime dateMessage = LocalDateTime.now();
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -62,6 +67,14 @@ public class Client  {
 
     public String getMessage() {
         return message;
+    }
+
+    public LocalDateTime getDateMessage() {
+        return dateMessage;
+    }
+
+    public void setDateMessage(LocalDateTime dateMessage) {
+        this.dateMessage = dateMessage;
     }
 
     public void setMessage(String message) {
