@@ -1,9 +1,9 @@
 package com.orlando.domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,8 +30,8 @@ public class Client  {
     @Column(nullable = false)
     private String message;
 
-    @Column(name = "date")
-    private LocalDateTime dateMessage = LocalDateTime.now();
+    @Column(name = "datetime")
+    private LocalDateTime dateTime = LocalDateTime.now();
 
     public Integer getId() {
         return id;
@@ -69,12 +69,12 @@ public class Client  {
         return message;
     }
 
-    public LocalDateTime getDateMessage() {
-        return dateMessage;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDateMessage(LocalDateTime dateMessage) {
-        this.dateMessage = dateMessage;
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setMessage(String message) {
