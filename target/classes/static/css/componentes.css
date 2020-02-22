@@ -236,7 +236,7 @@
   border: 0;
 
   background: none;
-  background-image: url("../imagens/bars.png");
+  background-image: url("../images/bars.png");
 
   outline: none;
 }
@@ -319,6 +319,30 @@
   color: #004b86;
 }
 
+/*--------------------*\
+  TITULO-LISTA
+\*--------------------*/
+.titulo-lista {
+  margin: 0;
+  margin-bottom: 40px;
+
+  border-bottom: 1px solid #ccc;
+
+  font-size: 2.6rem;
+  font-weight: normal;
+  color: #004b86;
+}
+
+
+
+
+<h1 class="titulo-formulario">Restons en contact</h1>
+
+
+
+
+
+
 
 /*--------------------*\
   GRUPO-ENTRADA
@@ -348,4 +372,21 @@
   background-color: #fff;
 
   font-size: 1.4rem;
+}
+
+/*--------------------*\
+  LISTA
+\*--------------------*/
+
+.lista__cabecalho {
+  margin: -10px;
+  margin-bottom: 0;
+
+  background-color: #95a4a5;
+  color: #fff;
+
+  text-align: center;
+  line-height: 2.5;
+  font-weight: normal;
+  font-size: 2em;
 }

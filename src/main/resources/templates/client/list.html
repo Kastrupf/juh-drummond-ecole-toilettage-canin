@@ -14,56 +14,68 @@
     <link rel="stylesheet" href="/css/componentes.css"/>
 </head>
 
+<header class="layout-cabecalho">
+    <div class="container">
+
+        <nav class="navegacao  navegacao--assinatura">
+            <a href="index.html"><img src="/images/logo.jpg" width="120" height="50" alt="Logo Juh Drummond"/></a>
+        </nav>
+
+    </div>
+</header>
+
 <body>
 
-<div class="container">
+<main class="layout-lista">
+    <div class="container">
 
-    <div th:if="${clients != null}">
-        <h4>
-            Liste de clients
-        </h4>
+        <div th:if="${clients != null}">
+            <h4 class="titulo-lista">Liste de clients</h4>
 
-        <div th:if="${mensagem != null}">
+            <div th:if="${mensagem != null}">
+                <div class="alert alert-info" role="alert">
+                    <span th:text="${mensagem}">Pas de clients dans la liste</span>
+                </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.nom}">Nom</td>
+                    <td th:text="${client.prenom}">Prenom</td>
+                    <td th:text="${client.email}">Email</td>
+                    <td th:text="${client.message}">Message</td>
+                    <td th:text="${client.dateTime}">Date de la Message</td>
+                </tr>
+            </table>
+        </div>
+
+        <div th:if="${#lists.isEmpty(clients)}">
             <div class="alert alert-info" role="alert">
-                <span th:text="${mensagem}">Pas de clients dans la liste</span>
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                La liste ést vide!
             </div>
         </div>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tr th:each="client : ${clients}">
-                <td th:text="${client.nom}">Nom</td>
-                <td th:text="${client.prenom}">Prenom</td>
-                <td th:text="${client.email}">Email</td>
-                <td th:text="${client.message}">Message</td>
-                <td th:text="${client.dateTime}">Date de la Message</td>
-            </tr>
-        </table>
-    </div>
+     </div>
+</main>
 
-    <div th:if="${#lists.isEmpty(clients)}">
-        <div class="alert alert-info" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign"></span>
-            La liste ést vide!
-        </div>
-    </div>
     <hr/>
-
-    <a class="btn btn-light" href="/home">Retour à l'accueil</a>
+        <a class="btn btn-light" href="/home">Retour à l'accueil</a>
     <hr/>
 
     <footer class="footer">
         <p>&copy; 2020 Tous droits réservés Juh Drummond</p>
     </footer>
 
-</div>
 </body>
 </html>
