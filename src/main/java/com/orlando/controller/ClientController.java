@@ -38,7 +38,7 @@ public class ClientController {
 
         clientService.enregistrer(client);
         attr.addFlashAttribute("mensagem", "Votre message a été bien envoyée");
-        return "redirect:/client/add";
+        return "redirect:/clients/list";
     }
 
     @GetMapping("/id")

@@ -37,7 +37,6 @@
                 <th>Email</th>
                 <th>Message</th>
                 <th>Date</th>
-                <th>Ip</th>
             </tr>
             </thead>
             <tr th:each="client : ${clients}">
@@ -45,7 +44,7 @@
                 <td th:text="${client.prenom}">Prenom</td>
                 <td th:text="${client.email}">Email</td>
                 <td th:text="${client.message}">Message</td>
-                <td th:text="${client.date_heure}">Date de la Message</td>
+                <td th:text="${client.dateTime}">Date de la Message</td>
             </tr>
         </table>
     </div>
