@@ -20,7 +20,7 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public List<Client> recuperer() {
-        return em.createQuery("select c from Client c", Client.class).getResultList();
+        return em.createQuery("select c from Client c order by c.dateTime desc", Client.class).getResultList();
     }
 
     @Override
