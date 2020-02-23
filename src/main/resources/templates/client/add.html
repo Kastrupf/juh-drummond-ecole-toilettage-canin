@@ -20,7 +20,7 @@
     <div class="container">
 
         <nav class="navegacao  navegacao--assinatura">
-            <a href="index.html"><img src="/images/logo.jpg" width="120" height="50" alt="Logo Juh Drummond"/></a>
+            <a href="home.html"><img src="/images/logo.jpg" width="120" height="50" alt="Logo Juh Drummond"/></a>
         </nav>
 
     </div>
@@ -29,7 +29,7 @@
 <main class="layout-assinatura">
     <div class="container">
 
-        <form th:action="@{/clients/enregistrer}" th:method="${client.id} == 0 ? post" th:object="${client}">
+        <form th:action="@{/client/enregistrer}" th:method="${client.id} == 0 ? post" th:object="${client}">
             <h1 class="titulo-formulario">Restons en contact</h1>
 
             <div class="row">
@@ -76,7 +76,7 @@
 
         <hr/>
 
-        <a class="btn btn-light" th:href="@{/clients/list}">Retour à l'accueil</a>
+        <a class="btn btn-light" th:href="@{/}">Retour à l'accueil</a>
 
         <hr/>
 

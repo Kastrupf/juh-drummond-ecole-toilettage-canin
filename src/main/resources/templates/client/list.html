@@ -29,7 +29,7 @@
 <main class="layout-lista">
     <div class="container">
 
-        <div th:if="${clients != null}">
+        <div th:if="${client != null}">
             <h4 class="titulo-lista">Liste de clients</h4>
 
             <div th:if="${mensagem != null}">
@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
 
-                <tr th:each="client : ${clients}">
+                <tr th:each="client : ${client}">
                     <td th:text="${client.nom}">Nom</td>
                     <td th:text="${client.prenom}">Prenom</td>
                     <td th:text="${client.email}">Email</td>
@@ -59,7 +59,7 @@
             </table>
         </div>
 
-        <div th:if="${#lists.isEmpty(clients)}">
+        <div th:if="${#lists.isEmpty(client)}">
             <div class="alert alert-info" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign"></span>
                 La liste ést vide!

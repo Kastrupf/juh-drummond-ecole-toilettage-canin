@@ -4,6 +4,7 @@ import com.orlando.domain.Client;
 import com.orlando.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("clients")
+@RequestMapping("client")
 public class ClientController {
 
     @Autowired
@@ -21,13 +22,13 @@ public class ClientController {
 
     @GetMapping("/list")
     public ModelAndView list(ModelMap model) {
-        model.addAttribute("clients", clientService.recuperer());
-        return new ModelAndView("/client/list", model);
+        model.addAttribute("client", clientService.recuperer());
+        return new ModelAndView("/list", model);
     }
 
     @GetMapping("/contact")
     public String preSave(@ModelAttribute("client") Client client) {
-        return "/client/add";
+        return "client/add";
     }
 
     @PostMapping("/enregistrer")
@@ -38,7 +39,7 @@ public class ClientController {
 
         clientService.enregistrer(client);
         attr.addFlashAttribute("mensagem", "Votre message a été bien envoyée");
-        return "redirect:/clients/list";
+        return "redirect:/client/contact";
     }
 
     @GetMapping("/id")
