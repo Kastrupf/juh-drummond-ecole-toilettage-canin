@@ -1,8 +1,12 @@
 package com.orlando.service;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+import com.orlando.dao.UserDao;
 import com.orlando.domain.Role;
 import com.orlando.domain.User;
-import com.orlando.dao.UserDao;
 import com.orlando.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,10 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {

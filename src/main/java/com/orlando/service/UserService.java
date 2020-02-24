@@ -1,6 +1,5 @@
 package com.orlando.service;
 
-
 import com.orlando.domain.User;
 import com.orlando.web.dto.UserRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
