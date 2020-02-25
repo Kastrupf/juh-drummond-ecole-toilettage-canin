@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Juh Drummond Ecole de Toilettage Canin</title>
+
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+        <link rel="stylesheet" href="/css/bootstrap-grid.min.css"/>
+        <link rel="stylesheet" href="/css/base.css"/>
+        <link rel="stylesheet" href="/css/layout.css"/>
+        <link rel="stylesheet" href="/css/componentes.css"/>
+
+        <script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+        <script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    </head>
+
+    <body>
+        <header class="layout-cabecalho">
+            <div class="container">
+
+                <nav class="navegacao  navegacao--assinatura">
+                    <a href="home.html"><img src="/images/logo.jpg" width="120" height="50" alt="Logo Juh Drummond"/></a>
+                </nav>
+
+            </div>
+        </header>
+
+        <main class="layout-assinatura">
+            <div class="container">
+
+                    <div th:if="${param.success}">
+                        <div class="alert alert-info">You've successfully registered to our awesome app!</div>
+                    </div>
+
+                    <h1 class="titulo-formulario">Restons en contact</h1>
+
+                    <form th:action="@{/client/enregistrer}" th:method="${client.id} == 0 ? post" th:object="${client}">
+
+                        <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation error</p>
+                        <div class="row">
+                           <input id="id" type="hidden" th:field="*{id}"/>
+                           <div class="form-group col-sm-6 grupo-entrada" th:classappend="${#fields.hasErrors('nom')}? 'has-error':''">
+                               <label for="nom" class="control-label">Nom</label>
+                               <input id="nom" class="form-control" th:field="*{nom}"/>
+                               <p class="error-message" th:each="error: ${#fields.errors('nom')}" th:text="${error}">Validation error</p>
+                           </div>
+
+                           <div class="form-group col-sm-6 grupo-entrada" th:classappend="${#fields.hasErrors('prenom')}? 'has-error':''">
+                                <label for="prenom" class="control-label">Prénom</label>
+                                <input id="prenom" class="form-control" th:field="*{prenom}" />
+                                <p class="error-message" th:each="error: ${#fields.errors('prenom')}" th:text="${error}">Validation error</p>
+                           </div>
+                        </div>
+
+                        <div class="form-group grupo-entrada" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                            <label for="email" class="control-label">E-mail</label>
+                            <input id="email" class="form-control" th:field="*{email}" />
+                            <p class="error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+                        </div>
+
+                        <div class="form-group grupo-entrada" th:classappend="${#fields.hasErrors('message')}? 'has-error':''">
+                            <label for="message" class="control-label">Message</label>
+                            <textarea id="message" class="form-control" type="text" rows="5" th:field="*{message}"></textarea>
+                            <p class="error-message" th:each="error: ${#fields.errors('message')}" th:text="${error}">Validation error</p>
+                        </div>
+
+                        <div class="form-group grupo-entrada" th:classappend="${#fields.hasErrors('terms')}? 'has-error':''">
+                            <input id="terms" type="checkbox" th:field="*{terms}" />  
+                            <label class="control-label" for="terms"> J'accepte les <a
+                                    href="/terms.html">terms et conditions.</a></label>
+                            <p class="error-message" th:each="error : ${#fields.errors('terms')}" th:text="${error}">Validation error</p>
+                        </div>
+
+                    <div class="form-group grupo-entrada">
+                        <button type="submit" class="botao  botao--enregistrer">S'enregister</button>
+                    </div>
+
+                    </form>
+
+
+
+                <hr/>
+
+                <a class="btn btn-light" th:href="@{/}">Retour à l'accueil</a>
+
+                <hr/>
+            </div>
+        </main>
+
+        <footer class="layout-rodape">
+            <div class="container">
+                <p>&copy; 2020 Tous droits réservés Juh Drummond</p>
+            </div>
+        </footer>
+    </body>
+</html>
